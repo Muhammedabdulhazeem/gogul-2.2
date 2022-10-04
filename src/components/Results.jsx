@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import ReactPlayer from "react-player";
 import Loading from "./Loading";
 import { useResultContext } from "../hooks/useResultContext";
 import SearchResult from "./SearchResult";
@@ -10,7 +9,7 @@ import VideoResults from "./VideoResults";
 
 
 const Results = ({ view }) => {
-    const { results, isLoading, getResults, searchTerm, setSearchTerm } = useResultContext();
+    const { isLoading, getResults, searchTerm } = useResultContext();
     const location = useLocation();
 
     useEffect(() => {
