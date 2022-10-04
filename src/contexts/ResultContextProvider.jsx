@@ -9,7 +9,7 @@ const baseURL = 'https://google-search3.p.rapidapi.com/api/v1'
 export const ResultContextProvider = ({children}) => {
     const [results, setResults] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const [searchTerm, setSearchTerm] = useState('Elon Musk')
+    const [searchTerm, setSearchTerm] = useState('');
 
     const getResults = async (type) => {
         setIsLoading(true)
@@ -20,7 +20,7 @@ export const ResultContextProvider = ({children}) => {
             headers: {
                 'X-User-Agent': 'desktop',
                 'X-Proxy-Location': 'EU',
-                'X-RapidAPI-Key': '883532e8bbmsh46016fb7b1715eep179490jsn026ecb82778a',
+                'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
                 'X-RapidAPI-Host': 'google-search3.p.rapidapi.com'
             }
         });

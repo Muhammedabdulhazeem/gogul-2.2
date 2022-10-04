@@ -9,13 +9,13 @@ import NewsResult from "./NewsResult";
 import VideoResults from "./VideoResults";
 
 
-const Results = () => {
+const Results = ({ view }) => {
     const { results, isLoading, getResults, searchTerm, setSearchTerm } = useResultContext();
     const location = useLocation();
 
     useEffect(() => {
         if(searchTerm) {
-            getResults(`${location.pathname}/q=${searchTerm}&num=10`)
+            getResults(`${location.pathname}/q=${searchTerm}&&num=10000`)
             // if(location.pathname === '/videos') {
             //     getResults(`search/q=${searchTerm} videos`)
             // } else {
@@ -30,13 +30,13 @@ const Results = () => {
 
     switch (location.pathname) {
         case '/search':
-            return <SearchResult />;
+            return <SearchResult view={view}/>;
         case '/image':
-            return <ImageResult />;
+            return <ImageResult view={view}/>;
         case '/video':
-            return <VideoResults />;
+            return <VideoResults view={view}/>;
         case '/news':
-            return <NewsResult />;
+            return <NewsResult view={view}/>;
         default:
             return "ERROR";
     }

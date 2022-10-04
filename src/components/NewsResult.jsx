@@ -1,13 +1,17 @@
 import { useResultContext } from "../hooks/useResultContext";
 
 
-const NewsResult = () => {
+const NewsResult = ({view}) => {
     const {results} = useResultContext()
 
+    const randit = Math.random() * 1000
+    const rndit = Math.random() * 900
+
     return (
-        <div className="flex flex-wrap justify-between space-y-6 sm:px-56 items-center">
+        <div className={view === "grid" ? "flex flex-wrap justify-between space-y-6 sm:px-56 items-center" : "flex flex-col space-y-7 ml-8"}>
             {results?.map(({links, id, source, title}) => (
-                <div key={`${id}${links?.[0].href}${source}`} className='md:w-2/5 w-full'>
+                <div key={id} className='md:w-2/5 w-full'>
+                    {console.log(id)}
                     <a href={links?.[0].href} target={"_blank"} rel='noreferrer' className="hover:underline">
                         <p className="text-lg dark:text-blue-300 text-blue-700">
                             {title}

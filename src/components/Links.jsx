@@ -12,17 +12,19 @@ const activeClassName = 'text-blue-700 border-b-2 dark:text-blue-300 border-blue
 const Links = () => {
     return (
         <div className="flex justify-between sm:justify-around items-center mt-4">
-           {links.map(({url, text}) => (
-                <NavLink
-                 key={url}
-                 to={url} 
-                 className={({ isActive }) =>
-                 isActive ? activeClassName : "m-2 mb-0"
-                 }
-                >
-                  {text}   
-                </NavLink>
-           ))} 
+            <div>
+                {links.map(({url, text}) => (
+                        <NavLink
+                        key={url}
+                        to={url} 
+                        className={({ isActive }) =>
+                        isActive ? activeClassName : "m-2 mb-0"
+                        }
+                        >
+                        {text}   
+                        </NavLink>
+                ))} 
+           </div>
         </div>
     );
 }

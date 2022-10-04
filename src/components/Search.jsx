@@ -4,13 +4,19 @@ import { useResultContext } from "../hooks/useResultContext";
 import Links from "./Links";
 
 const Search = () => {
-    const [text, setText] = useState('Cars')
+    const [text, setText] = useState('')
     const {setSearchTerm} = useResultContext()
     const [debouncedValue] = useDebounce(text, 300)
+    console.log("user-text: " + text)
 
     useEffect(() => {
         if(debouncedValue) setSearchTerm(text)
     }, [debouncedValue])
+
+    useEffect(() => {
+        if(text == "") setSearchTerm()
+            
+    }, [text])
 
     return (
         <div className="relative sm:ml-48 md:ml-72 sm:-mt-10 mt-3">
@@ -21,13 +27,13 @@ const Search = () => {
               placeholder="Search Gogul or type URL"
               onChange={(e) => setText(e.target.value)}
             />
-            <button 
+            {text && (<button 
               type="button" 
               className="absolute top-2.5 right-4 text-lg text-gray-500"
               onClick={() => setText('')}
             >
                 X
-            </button>
+            </button>)}
             <Links />
         </div>
     );

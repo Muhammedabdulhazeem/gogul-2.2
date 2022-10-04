@@ -1,0 +1,7 @@
+.empty-search {
+    /* border: 1px solid red; */
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
